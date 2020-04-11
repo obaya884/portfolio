@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import icon from "../images/icon.png";
-import hatenaBlogLogo from "../images/hatenablog-logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class About extends React.Component {
@@ -11,7 +10,7 @@ class About extends React.Component {
         <h1>Profile</h1>
         <ContentsContainer>
           <ProfileContainer>
-            <img src={icon} alt="profile image"></img>
+            <img src={icon} alt="profile"></img>
             <Profile>
               <p>- Name: 大林 拓実</p>
               <p>- Nickname: ろばーと</p>

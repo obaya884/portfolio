@@ -3,6 +3,7 @@ import "./App.css";
 import Sidebar from "./components/sidebar";
 import Top from "./components/top";
 import About from "./components/about";
+import Experience from "./components/experience";
 
 import { library } from "@fortawesome/fontawesome-svg-core"; //fontawesomeのコアファイル
 import { fab } from "@fortawesome/free-brands-svg-icons"; //fontawesomeのbrandアイコンのインポート
@@ -17,6 +18,7 @@ function App() {
       <Sidebar></Sidebar>
       <Top></Top>
       <About></About>
+      <Experience></Experience>
     </div>
   );
 }
