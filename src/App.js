@@ -6,21 +6,34 @@ import About from "./components/about";
 import Experience from "./components/experience";
 import Product from "./components/product";
 
-import { library } from "@fortawesome/fontawesome-svg-core"; //fontawesomeのコアファイル
-import { fab } from "@fortawesome/free-brands-svg-icons"; //fontawesomeのbrandアイコンのインポート
-import { fas } from "@fortawesome/free-solid-svg-icons"; //fontawesomeのsolidアイコンのインポート
-import { far } from "@fortawesome/free-regular-svg-icons"; //fontawesomeのregularアイコンのインポート
-
-library.add(fab, fas, far); //他のコンポーネントから簡単に呼び出せるようにするための登録処理？
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
+library.add(fab, fas, far);
 
 function App() {
   return (
     <div className="App">
+      {/* <ul>
+        <li>
+          <a href="#top">top</a>
+        </li>
+        <li>
+          <a href="#about">about</a>
+        </li>
+        <li>
+          <a href="#experience">experience</a>
+        </li>
+        <li>
+          <a href="#product">product</a>
+        </li>
+      </ul> */}
       <Sidebar></Sidebar>
-      <Top></Top>
-      <About></About>
-      <Experience></Experience>
-      <Product></Product>
+      <Top id="top"></Top>
+      <About id="about"></About>
+      <Experience id="experience"></Experience>
+      <Product id="product"></Product>
     </div>
   );
 }

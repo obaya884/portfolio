@@ -1,26 +1,38 @@
 import React from "react";
 import styled from "styled-components";
+import { HashRouter } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 class Sidebar extends React.Component {
   render() {
     return (
       <SideContainer>
-        <Sidenav>
-          <ul>
-            <li>
-              <a href="#">Product</a>
-            </li>
-            <li>
-              <a href="#">Experience</a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Top</a>
-            </li>
-          </ul>
-        </Sidenav>
+        <HashRouter>
+          <Sidenav>
+            <ul>
+              <li>
+                <HashLink smooth to="/#product">
+                  Product
+                </HashLink>
+              </li>
+              <li>
+                <HashLink smooth to="/#experience">
+                  Experience
+                </HashLink>
+              </li>
+              <li>
+                <HashLink smooth to="/#about">
+                  About
+                </HashLink>
+              </li>
+              <li>
+                <HashLink smooth to="/#top">
+                  Top
+                </HashLink>
+              </li>
+            </ul>
+          </Sidenav>
+        </HashRouter>
       </SideContainer>
     );
   }
@@ -48,6 +60,9 @@ const Sidenav = styled.nav`
       a {
         color: #000;
         text-decoration: none;
+        :hover {
+          color: #fff;
+        }
       }
     }
   }
