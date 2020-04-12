@@ -61,7 +61,7 @@ class Product extends React.Component {
     ));
 
     return (
-      <ProductContainer>
+      <ProductContainer id="product">
         <h1>Product</h1>
         <ContentsContainer>{cardItems}</ContentsContainer>
         <footer>&copy;2020 Takumi Obayashi</footer>

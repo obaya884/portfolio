@@ -4,7 +4,7 @@ import styled from "styled-components";
 class Top extends React.Component {
   render() {
     return (
-      <TopContainer>
+      <TopContainer id="top">
         <h1>Takumi Obayashi</h1>
         <h2>portfolio</h2>
       </TopContainer>
