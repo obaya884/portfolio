@@ -7,32 +7,30 @@ class Sidebar extends React.Component {
   render() {
     return (
       <SideContainer>
-        <HashRouter>
-          <Sidenav>
-            <ul>
-              <li>
-                <HashLink smooth to="/#product">
-                  Product
-                </HashLink>
-              </li>
-              <li>
-                <HashLink smooth to="/#experience">
-                  Experience
-                </HashLink>
-              </li>
-              <li>
-                <HashLink smooth to="/#about">
-                  About
-                </HashLink>
-              </li>
-              <li>
-                <HashLink smooth to="/#top">
-                  Top
-                </HashLink>
-              </li>
-            </ul>
-          </Sidenav>
-        </HashRouter>
+        <Sidenav>
+          <ul>
+            <li>
+              <HashLink smooth to="/#product">
+                Product
+              </HashLink>
+            </li>
+            <li>
+              <HashLink smooth to="/#experience">
+                Experience
+              </HashLink>
+            </li>
+            <li>
+              <HashLink smooth to="/#about">
+                About
+              </HashLink>
+            </li>
+            <li>
+              <HashLink smooth to="/#top">
+                Top
+              </HashLink>
+            </li>
+          </ul>
+        </Sidenav>
       </SideContainer>
     );
   }

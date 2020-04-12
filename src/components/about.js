@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class About extends React.Component {
   render() {
     return (
-      <AboutContainer>
+      <AboutContainer id="about">
         <h1>Profile</h1>
         <ContentsContainer>
           <ProfileContainer>

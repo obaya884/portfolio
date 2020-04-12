@@ -6,6 +6,9 @@ import About from "./components/about";
 import Experience from "./components/experience";
 import Product from "./components/product";
 
+import { HashRouter, Switch, Route, Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -15,25 +18,21 @@ library.add(fab, fas, far);
 function App() {
   return (
     <div className="App">
-      {/* <ul>
-        <li>
-          <a href="#top">top</a>
-        </li>
-        <li>
-          <a href="#about">about</a>
-        </li>
-        <li>
-          <a href="#experience">experience</a>
-        </li>
-        <li>
-          <a href="#product">product</a>
-        </li>
-      </ul> */}
-      <Sidebar></Sidebar>
-      <Top id="top"></Top>
-      <About id="about"></About>
-      <Experience id="experience"></Experience>
-      <Product id="product"></Product>
+      <HashRouter>
+        <Sidebar></Sidebar>
+        <Route path="/">
+          <Top></Top>
+        </Route>
+        <Route path="/">
+          <About></About>
+        </Route>
+        <Route path="/">
+          <Experience></Experience>
+        </Route>
+        <Route path="/">
+          <Product></Product>
+        </Route>
+      </HashRouter>
     </div>
   );
 }
