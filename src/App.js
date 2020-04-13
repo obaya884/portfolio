@@ -19,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <Helmet>
+        <title>Portfolio2020 | Takumi Obayashi</title>
         <meta property="og:title" content="Portfolio2020 | Takumi Obayashi" />
         <meta property="og:type" content="website" />
         <meta
