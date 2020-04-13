@@ -1,11 +1,37 @@
 import React from "react";
 import styled from "styled-components";
 import { HashLink } from "react-router-hash-link";
+import Particles from "react-particles-js";
 
 class Top extends React.Component {
   render() {
     return (
       <TopContainer id="top">
+        <Particles
+          params={{
+            particles: {
+              number: {
+                value: 60,
+                limit: 200,
+              },
+              size: {
+                value: 3,
+              },
+            },
+            interactivity: {
+              events: {
+                onhover: {
+                  enable: true,
+                  mode: "connect",
+                },
+                onclick: {
+                  enable: true,
+                  mode: "repulse",
+                },
+              },
+            },
+          }}
+        />
         <h1>Takumi Obayashi</h1>
         <h2>portfolio</h2>
         <ScrollButton>
@@ -22,6 +48,7 @@ class Top extends React.Component {
 }
 
 const TopContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -33,11 +60,20 @@ const TopContainer = styled.div`
     margin-bottom: 12px;
     font-size: 108px;
     font-weight: 500;
+    z-index: 2;
   }
   h2 {
     margin: 0;
     font-size: 76px;
     font-weight: 500;
+    z-index: 2;
+  }
+
+  div#tsparticles {
+    position: absolute;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
   }
 `;
 

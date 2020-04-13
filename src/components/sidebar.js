@@ -40,7 +40,7 @@ const SideContainer = styled.div`
   transform: rotate(270deg);
   top: 50%;
   left: -200px;
-  z-index: 2;
+  z-index: 3;
 `;
 
 const Sidenav = styled.nav`
