@@ -6,8 +6,7 @@ import About from "./components/about";
 import Experience from "./components/experience";
 import Product from "./components/product";
 
-import { HashRouter, Switch, Route, Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
+import { HashRouter, Route } from "react-router-dom";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";

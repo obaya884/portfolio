@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { HashRouter } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 class Sidebar extends React.Component {
