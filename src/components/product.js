@@ -8,6 +8,8 @@ class Product extends React.Component {
       {
         name: "キモチの切り替えカタログ",
         genre: "webページ",
+        content_type: "https://kimochikirikae-catalog.com/",
+        external_link_url: "https://life-is-tech.com/",
         desc:
           "初めて自身で制作したwebページ。気分転換したい時などにその方法を閲覧することができる。HTML/CSS, jQueryで実装した。",
         background_color: "#A4BE3C",
@@ -15,6 +17,8 @@ class Product extends React.Component {
       {
         name: "シアターコンシェルジュ",
         genre: "iOSアプリ",
+        content_type: "external-link-alt",
+        external_link_url: "https://apps.apple.com/jp/app/id1483325397",
         desc:
           "初めてApp Storeに公開した自作のiOSアプリ。予約した劇場鑑賞映画の情報や、移動経路、感想のメモなどが管理できるアプリ。firebaseを利用してデータを保存している。/CSS, jQueryで実装した。",
         background_color: "#A73637",
@@ -22,6 +26,8 @@ class Product extends React.Component {
       {
         name: "Tetra",
         genre: "iOSアプリ",
+        content_type: "external-link-alt",
+        external_link_url: "https://apps.apple.com/jp/app/id1490807423",
         desc:
           "UIにこだわったシンプルなTODOアプリ。画面が4分割されており、それぞれの領域にタスクを登録することができる。",
         background_color: "#7EBEFF",
@@ -29,12 +35,17 @@ class Product extends React.Component {
       {
         name: "Charm Me!",
         genre: "Androidアプリ",
+        content_type: "external-link-alt",
+        external_link_url:
+          "https://play.google.com/store/apps/details?id=app.takumi.obayashi.charmme",
         desc:
           "自分で決めたジェスチャーを描くことでタイマーが作動するアプリ。ジェスチャーを魔法に見立てることで“自分にバフをかける”ことをイメージした世界観を演出した。",
         background_color: "#740206",
       },
       {
         name: "Sireee",
+        content_type: "",
+        external_link_url: "",
         genre: "iOSアプリ（非公開）",
         desc:
           "freeeのチーム開発インターンでの成果物。簡単な勤怠打刻と状態管理に加えて、登録したフレーズでSiriでの打刻を行うことができる。主にSiriでの処理部分の開発を担当した。",
@@ -43,6 +54,8 @@ class Product extends React.Component {
       {
         name: "SHABOM",
         genre: "iOS/Androidアプリ",
+        content_type: "",
+        external_link_url: "",
         desc:
           "Hack U 2019 OSAKAで発表したAR技術を用いたSNSアプリ。チーム内ではマネージャーを担当。Happy Hacking賞を受賞した。",
         background_color: "#505C73",
@@ -90,7 +103,6 @@ const ProductContainer = styled.div`
 `;
 
 const ContentsContainer = styled.div`
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -98,14 +110,6 @@ const ContentsContainer = styled.div`
   margin: 0 0 0 auto;
   height: 80%;
   width: 1300px;
-
-  svg {
-    position: absolute;
-    top: 42%;
-    right: -80px;
-    padding: 0;
-    margin: 0;
-  }
 `;
 
 export default Product;

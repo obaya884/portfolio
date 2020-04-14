@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import kimochiNoKirikaeCatalog from "../images/kimochi-no-kirikae-catalog.svg";
 import theaterConcierge from "../images/theater-concierge.svg";
@@ -25,13 +26,31 @@ class ProductCard extends React.Component {
       image = shabom;
     }
 
+    let icon;
+    if (this.props.genre === "iOSアプリ") {
+      icon = ["fab", "apple"];
+    } else if (this.props.genre === "webページ") {
+      icon = ["fas", "external-link-alt"];
+    } else if (this.props.genre === "Androidアプリ") {
+      icon = ["fab", "google-play"];
+    }
+
     return (
       <CardContainer>
         <ImageContainer background_color={this.props.background_color}>
           <img src={image} alt={this.props.company_name}></img>
         </ImageContainer>
         <DescriptionContainer>
-          <h3>{this.props.name}</h3>
+          <div>
+            <h3>{this.props.name}</h3>
+            <a
+              href={this.props.external_link_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon className="font-awesome-icon" icon={icon} />
+            </a>
+          </div>
           <p>{this.props.genre}</p>
           <p>{this.props.desc}</p>
         </DescriptionContainer>
@@ -64,8 +83,24 @@ const DescriptionContainer = styled.div`
   width: 100%;
   height: 140px;
   font-family: sans-serif;
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      color: #000;
+      text-decoration: none;
+      /* font-size: 0.8em; */
+      :hover path {
+        fill: #808080;
+      }
+    }
+  }
+
   h3 {
-    margin: 0;
+    margin: 0 8px 0 0;
   }
   p {
     margin: 0;
