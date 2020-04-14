@@ -7,7 +7,7 @@ class Experience extends React.Component {
     const internInfos = [
       {
         company_name: "ライフイズテック株式会社",
-        external_link_url: "",
+        external_link_url: "https://life-is-tech.com/",
         period: "2018/08~",
         desc:
           "学生メンターとして中高生に主にiPhoneアプリ制作を指導。キャンプではサブディレクターとしてディレクション業務も行う。",
@@ -15,6 +15,7 @@ class Experience extends React.Component {
       },
       {
         company_name: "チームラボ株式会社",
+        external_link_url: "https://www.team-lab.com/",
         period: "2019/09/02~09/13",
         desc:
           "2週間のサマーインターンに参加。iOSアプリ開発の実案件に携わった。RxSwiftやReduxでの設計などの技術を学んだ。",
@@ -22,6 +23,7 @@ class Experience extends React.Component {
       },
       {
         company_name: "株式会社グッドパッチ",
+        external_link_url: "https://goodpatch.com/ja/",
         period: "2020/01/29",
         desc:
           "1dayのデザインインターンに参加。ユーザーインタビューからプロトタイプ作成までのデザイン制作を体験した。",
@@ -29,6 +31,7 @@ class Experience extends React.Component {
       },
       {
         company_name: "freee株式会社",
+        external_link_url: "https://corp.freee.co.jp/",
         period: "2019/08/19~08/29",
         desc:
           "2週間のチーム開発インターンシップに参加。Productで紹介している「Sireee」という勤怠管理のiOSアプリを作成。freee APIとSiriを使用し、音声で打刻ができるアプリを作成した。",
@@ -36,6 +39,7 @@ class Experience extends React.Component {
       },
       {
         company_name: "株式会社インゲージ",
+        external_link_url: "https://ingage.co.jp/",
         period: "2019/10~2020/01",
         desc:
           "ソフトウェアエンジニアインターンとして自社サービスである「Re:Lation」の機能開発に携わった。使用技術はAndularJSとRails。",
@@ -79,22 +83,13 @@ const ExperienceContainer = styled.div`
 `;
 
 const ContentsContainer = styled.div`
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: space-between;
   margin: 0 0 0 auto;
   height: 80%;
-  width: 1300px;
-
-  svg {
-    position: absolute;
-    top: 42%;
-    right: -80px;
-    padding: 0;
-    margin: 0;
-  }
+  width: 90%;
 `;
 
 export default Experience;
