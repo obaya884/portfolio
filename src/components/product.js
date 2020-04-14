@@ -18,7 +18,7 @@ class Product extends React.Component {
         genre: "iOSアプリ",
         external_link_url: "https://apps.apple.com/jp/app/id1483325397",
         desc:
-          "初めてApp Storeに公開した自作のiOSアプリ。予約した劇場鑑賞映画の情報や、移動経路、感想のメモなどが管理できるアプリ。firebaseを利用してデータを保存している。/CSS, jQueryで実装した。",
+          "初めてApp Storeに公開した自作のiOSアプリ。予約した劇場鑑賞映画の情報や、移動経路、感想のメモなどが管理できるアプリ。firebaseを利用してデータを保存している。",
         background_color: "#A73637",
       },
       {
