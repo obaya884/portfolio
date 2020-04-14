@@ -6,7 +6,7 @@ import About from "./components/about";
 import Experience from "./components/experience";
 import Product from "./components/product";
 
-import { HashRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -17,7 +17,7 @@ library.add(fab, fas, far);
 function App() {
   return (
     <div className="App">
-      <HashRouter>
+      <BrowserRouter>
         <Sidebar></Sidebar>
         <Route path="/">
           <Top></Top>
@@ -31,7 +31,7 @@ function App() {
         <Route path="/">
           <Product></Product>
         </Route>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }
