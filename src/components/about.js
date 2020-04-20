@@ -22,7 +22,7 @@ class About extends React.Component {
               </p>
               <p>
                 - Skill
-                <br />- iOS/Swift, Android/kotlin, HTML3/CSS5, javascript(React,
+                <br />- iOS/Swift, Android/kotlin, HTML5/CSS3, javascript(React,
                 Vue), ruby(Rails), python, C++
                 <br /> - git/GitHub, Adobe illustrator, Adobe XD
               </p>
