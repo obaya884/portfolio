@@ -1,13 +1,12 @@
-import styled from "styled-components";
-
 import { products } from "../data/products";
 import Card from "./Card";
 import Section from "./Section";
+import styles from "./Product.module.css";
 
 function Product() {
   return (
     <Section id="product" title="Product" backgroundColor="#9ba2ff">
-      <ContentsContainer>
+      <div className={styles.grid}>
         {products.map((product) => (
           <Card
             key={product.name}
@@ -19,25 +18,10 @@ function Product() {
             link={product.link}
           />
         ))}
-      </ContentsContainer>
-      <Footer>&copy;2020 Takumi Obayashi</Footer>
+      </div>
+      <footer className={styles.footer}>&copy;2020 Takumi Obayashi</footer>
     </Section>
   );
 }
-
-const ContentsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: space-between;
-  margin: 0 0 0 auto;
-  height: 80%;
-  width: 1300px;
-`;
-
-const Footer = styled.footer`
-  margin-left: 60px;
-  text-align: left;
-`;
 
 export default Product;

@@ -1,5 +1,6 @@
-import type { ReactNode } from "react";
-import styled from "styled-components";
+import type { CSSProperties, ReactNode } from "react";
+
+import styles from "./Section.module.css";
 
 type SectionProps = {
   /** Doubles as the anchor target the sidebar links to. */
@@ -11,26 +12,15 @@ type SectionProps = {
 
 function Section({ id, title, backgroundColor, children }: SectionProps) {
   return (
-    <SectionContainer id={id} $backgroundColor={backgroundColor}>
-      <h1>{title}</h1>
+    <div
+      id={id}
+      className={styles.section}
+      style={{ "--section-background-color": backgroundColor } as CSSProperties}
+    >
+      <h1 className={styles.title}>{title}</h1>
       {children}
-    </SectionContainer>
+    </div>
   );
 }
-
-const SectionContainer = styled.div<{ $backgroundColor: string }>`
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  background-color: ${(props) => props.$backgroundColor};
-  font-family: Futura, sans-serif;
-  h1 {
-    text-align: center;
-    font-weight: 500;
-    margin: 0;
-    padding-top: 60px;
-    margin-bottom: 20px;
-  }
-`;
 
 export default Section;

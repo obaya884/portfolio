@@ -1,0 +1,61 @@
+.about {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-color: #81b4e7;
+  font-family: Futura, sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+  padding-top: 60px;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+}
+
+.profile {
+  width: 70%;
+  height: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profileImage {
+  width: 300px;
+  height: 300px;
+}
+
+.profileText p {
+  font-family: Futura, sans-serif;
+  text-indent: -1em;
+  text-align: left;
+}
+
+.links {
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.links a {
+  color: #000;
+  text-decoration: none;
+}
+
+.links a:hover path {
+  fill: #fff;
+}
+
+.icon {
+  font-size: 1.8em;
+}

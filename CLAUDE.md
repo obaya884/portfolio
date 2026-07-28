@@ -41,7 +41,8 @@ npm run lint       # eslint
 src/
   main.tsx           エントリポイント
   App.tsx
-  components/        すべて関数コンポーネント・PascalCase
+  index.css          グローバルスタイル
+  components/        関数コンポーネント + 同名の .module.css
   data/              表示コンテンツ（型付き）
   assets/            画像。import して URL 文字列として使う
 ```
@@ -58,11 +59,15 @@ src/
 
 `About` はカードグリッドではなく見出しの余白も違うので、`Section` は使わず独立している。
 
-### styled-components
+### スタイリングは CSS Modules
 
-v6 は未知の props を DOM に転送しないので、**スタイル用の props は transient props（`$` 始まり）にすること**。`$backgroundColor` がその例。`$` を落とすと React が未知の DOM 属性だと警告する。
+コンポーネントごとに `Xxx.module.css` を隣に置き、`import styles from "./Xxx.module.css"` して `className={styles.foo}` で当てる。Vite が標準サポートしているのでビルド設定は不要。CSS-in-JS のランタイムは無い。
 
-型付きで使う場合は `styled.div<{ $backgroundColor: string }>` のようにジェネリクスで宣言する。
+**動的な値は CSS カスタムプロパティで渡す。** セクションとカードの背景色だけが動的で、`style={{ "--card-background-color": color } as CSSProperties}` のように inline style で変数を注入し、CSS 側は `var(--card-background-color)` を参照する。TypeScript はカスタムプロパティを `CSSProperties` として認めないのでキャストが要る。
+
+グローバルなスタイル（`body` など）は `src/index.css` に置く。
+
+CSS ネストは使わず、フラットなセレクタで書いている（`.link:hover path` など）。
 
 ### FontAwesome
 

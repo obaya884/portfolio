@@ -1,0 +1,14 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-between;
+  margin: 0 0 0 auto;
+  height: 80%;
+  width: 1300px;
+}
+
+.footer {
+  margin-left: 60px;
+  text-align: left;
+}

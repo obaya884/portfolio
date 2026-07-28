@@ -1,0 +1,33 @@
+.container {
+  position: fixed;
+  transform: rotate(270deg);
+  top: 50%;
+  left: -200px;
+  z-index: 3;
+}
+
+.nav {
+  font-family: Futura, sans-serif;
+  font-weight: 500;
+}
+
+.list {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+}
+
+.item {
+  font-size: 1.2em;
+  margin-right: 60px;
+}
+
+.link {
+  color: #000;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #fff;
+}

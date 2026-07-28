@@ -1,7 +1,8 @@
-import { Particles, ParticlesProvider } from "@tsparticles/react";
 import type { Engine, ISourceOptions } from "@tsparticles/engine";
+import { Particles, ParticlesProvider } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import styled from "styled-components";
+
+import styles from "./Top.module.css";
 
 // ParticlesProvider throws if this callback is not referentially stable,
 // so it lives at module scope rather than inside render.
@@ -52,104 +53,22 @@ const PARTICLE_OPTIONS: ISourceOptions = {
 
 function Top() {
   return (
-    <TopContainer id="top">
+    <div id="top" className={styles.top}>
       <ParticlesProvider init={initParticlesEngine}>
-        <Particles id="tsparticles" options={PARTICLE_OPTIONS} />
+        <Particles className={styles.particles} options={PARTICLE_OPTIONS} />
       </ParticlesProvider>
-      <h1>Takumi Obayashi</h1>
-      <h2>portfolio</h2>
-      <ScrollButton>
+      <h1 className={styles.title}>Takumi Obayashi</h1>
+      <h2 className={styles.subtitle}>portfolio</h2>
+      <div className={styles.scrollButton}>
         <a href="#about">
           <span></span>
           <span></span>
           <span></span>
           Scroll
         </a>
-      </ScrollButton>
-    </TopContainer>
+      </div>
+    </div>
   );
 }
-
-const TopContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-  background-color: #2fb37e;
-  font-family: Futura, sans-serif;
-  h1 {
-    margin-top: 250px;
-    margin-bottom: 12px;
-    font-size: 108px;
-    font-weight: 500;
-    z-index: 2;
-  }
-  h2 {
-    margin: 0;
-    font-size: 76px;
-    font-weight: 500;
-    z-index: 2;
-  }
-
-  div#tsparticles {
-    position: absolute;
-    z-index: 1;
-    height: 100vh;
-    width: 100vw;
-  }
-`;
-
-const ScrollButton = styled.div`
-  a {
-    padding-top: 70px;
-    position: absolute;
-    left: 50%;
-    bottom: 20px;
-    text-decoration: none;
-    z-index: 2;
-    color: #fff;
-    font-size: 1.3em;
-    font-weight: 400;
-    transform: translate(0, -50%);
-  }
-  span {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 24px;
-    height: 24px;
-    margin-left: -12px;
-    border-left: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    transform: rotate(-45deg);
-    animation: sdb 2s infinite;
-    opacity: 0;
-    box-sizing: border-box;
-
-    :nth-of-type(1) {
-      animation-delay: 0s;
-    }
-    :nth-of-type(2) {
-      top: 16px;
-      animation-delay: 0.15s;
-    }
-    :nth-of-type(3) {
-      top: 32px;
-      animation-delay: 0.3s;
-    }
-  }
-  @keyframes sdb {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-`;
 
 export default Top;

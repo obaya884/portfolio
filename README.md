@@ -7,7 +7,7 @@
 ## 技術構成
 
 - Vite / React 19 / TypeScript
-- styled-components
+- CSS Modules
 - tsparticles（トップ画面の背景演出）
 
 縦スクロールの1ページ構成で、ルータは使っていません。セクション間の移動は素のアンカーリンクです。掲載内容は `src/data/` に型付きのデータとしてまとまっています。

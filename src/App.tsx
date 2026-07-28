@@ -1,25 +1,20 @@
-import styled from "styled-components";
-
 import About from "./components/About";
 import Experience from "./components/Experience";
 import Product from "./components/Product";
 import Sidebar from "./components/Sidebar";
 import Top from "./components/Top";
+import styles from "./App.module.css";
 
 function App() {
   return (
-    <AppContainer>
+    <div className={styles.app}>
       <Sidebar />
       <Top />
       <About />
       <Experience />
       <Product />
-    </AppContainer>
+    </div>
   );
 }
-
-const AppContainer = styled.div`
-  text-align: center;
-`;
 
 export default App;

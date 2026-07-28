@@ -1,0 +1,52 @@
+.card {
+  width: 360px;
+  height: 240px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+/* --card-background-color is set per card from the component. */
+.imageArea {
+  width: 100%;
+  height: 180px;
+  background-color: var(--card-background-color);
+  border-radius: 10px 10px 0px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body {
+  width: 100%;
+  height: 140px;
+  font-family: sans-serif;
+}
+
+.heading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0 8px 0 0;
+}
+
+.link {
+  color: #000;
+  text-decoration: none;
+  font-size: 0.8em;
+}
+
+.link:hover path {
+  fill: #808080;
+}
+
+.text {
+  margin: 0;
+  font-size: 0.7em;
+}

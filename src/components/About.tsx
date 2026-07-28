@@ -6,9 +6,9 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
 
 import profileImage from "../assets/icon.png";
+import styles from "./About.module.css";
 
 const SOCIAL_LINKS: { name: string; url: string; icon: IconDefinition }[] = [
   { name: "Twitter", url: "https://twitter.com/obaya884", icon: faTwitter },
@@ -29,12 +29,12 @@ const HATENA_BLOG_URL = "https://t-6bar10.hatenablog.com/";
 
 function About() {
   return (
-    <AboutContainer id="about">
-      <h1>Profile</h1>
-      <ContentsContainer>
-        <ProfileContainer>
-          <img src={profileImage} alt="profile" />
-          <Profile>
+    <div id="about" className={styles.about}>
+      <h1 className={styles.title}>Profile</h1>
+      <div className={styles.contents}>
+        <div className={styles.profile}>
+          <img className={styles.profileImage} src={profileImage} alt="profile" />
+          <div className={styles.profileText}>
             <p>- Name: 大林 拓実</p>
             <p>- Nickname: ろばーと</p>
             <p>- Birthday: 1996/7/27</p>
@@ -49,9 +49,9 @@ function About() {
               Vue), ruby(Rails), python, C++
               <br /> - git/GitHub, Adobe illustrator, Adobe XD
             </p>
-          </Profile>
-        </ProfileContainer>
-        <LinkIconContainer>
+          </div>
+        </div>
+        <div className={styles.links}>
           {SOCIAL_LINKS.map((link) => (
             <a
               key={link.name}
@@ -60,7 +60,7 @@ function About() {
               rel="noopener noreferrer"
               aria-label={link.name}
             >
-              <FontAwesomeIcon className="font-awesome-icon" icon={link.icon} />
+              <FontAwesomeIcon className={styles.icon} icon={link.icon} />
             </a>
           ))}
           <a
@@ -71,9 +71,9 @@ function About() {
           >
             <HatenaIcon />
           </a>
-        </LinkIconContainer>
-      </ContentsContainer>
-    </AboutContainer>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -94,66 +94,5 @@ function HatenaIcon() {
     </svg>
   );
 }
-
-const AboutContainer = styled.div`
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  background-color: #81b4e7;
-  font-family: Futura, sans-serif;
-  h1 {
-    text-align: center;
-    font-weight: 500;
-    margin: 0;
-    padding-top: 60px;
-  }
-`;
-
-const ContentsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 70%;
-`;
-
-const ProfileContainer = styled.div`
-  width: 70%;
-  height: 80%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  img {
-    width: 300px;
-    height: 300px;
-  }
-`;
-
-const Profile = styled.div`
-  p {
-    font-family: Futura, sans-serif;
-    text-indent: -1em;
-    text-align: left;
-  }
-`;
-
-const LinkIconContainer = styled.div`
-  width: 40%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  a {
-    color: #000;
-    text-decoration: none;
-    :hover path {
-      fill: #fff;
-    }
-  }
-
-  .font-awesome-icon {
-    font-size: 1.8em;
-  }
-`;
 
 export default About;
