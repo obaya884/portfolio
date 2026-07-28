@@ -3,7 +3,7 @@
   width: 100vw;
   margin: 0;
   background-color: #81b4e7;
-  font-family: Futura, sans-serif;
+  font-family: "Jost Variable", sans-serif;
 }
 
 .title {
@@ -35,7 +35,7 @@
 }
 
 .profileText p {
-  font-family: Futura, sans-serif;
+  font-family: "Jost Variable", sans-serif;
   text-indent: -1em;
   text-align: left;
 }

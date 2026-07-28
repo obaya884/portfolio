@@ -69,6 +69,16 @@ src/
 
 CSS ネストは使わず、フラットなセレクタで書いている（`.link:hover path` など）。
 
+### 書体は Jost をセルフホスト
+
+見出し・サイドバー・プロフィールは `"Jost Variable", sans-serif`。`main.tsx` の `import "@fontsource-variable/jost"` で読み込む。
+
+以前は `Futura` を指定していたが、Futura は macOS/iOS にしか無いため Windows/Android では素の `sans-serif` にフォールバックし、幾何学サンセリフという書体の性格が失われていた。Jost は Futura を範に作られたオープンソース書体で、全環境で同じ見た目になる。
+
+**外部 CDN は使わずセルフホストすること。** このサイトはサードパーティへのリクエストがゼロで、それを保つのは意図的（プライバシーと表示速度の両面）。以前あった Google Fonts の `@import` は同じ理由で削除した。
+
+カード本文だけは元から `sans-serif` 指定で、Jost にはしていない。
+
 ### FontAwesome
 
 アイコンは**使うものだけ個別に import してオブジェクトで渡す**（`icon={faGithub}`）。`library.add()` と文字列指定（`icon={["fab", "github"]}`）は使わない。全アイコンを読み込むとバンドルが 400KB → 2MB に膨らむ。
