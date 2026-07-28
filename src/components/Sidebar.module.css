@@ -12,29 +12,16 @@
     height: 100vh;
     width: var(--rail);
     /* 画面左端に貼り付かないよう内側に寄せる */
-    padding-left: 1.75rem;
+    padding-left: var(--rail-inset);
     box-sizing: border-box;
     z-index: 3;
   }
 }
 
-/* セクションを縦に送る構成なので、進行を示す軸線を通す。
-   --tick-center は印の中心に合わせた実測値 */
 .container {
-  --tick-center: 2.5625rem;
-}
-
-.container::before {
-  content: "";
-  position: absolute;
-  left: calc(var(--tick-center) - 0.5px);
-  top: 50%;
-  /* 項目群とほぼ同じ高さ。文字量で決まるのでビューポート比にはしない */
-  height: 26rem;
-  transform: translateY(-50%);
-  width: 1px;
-  background: var(--color-ink);
-  opacity: 0.22;
+  --rail-inset: 1.75rem;
+  --tick-size: 0.5rem;
+  --item-gap: 2.25rem;
 }
 
 .list {
@@ -49,12 +36,14 @@
   /* 縦組みでは row が縦方向になる */
   display: flex;
   flex-direction: row;
+  /* 縦組みでは align-items が水平方向。始端に揃えて印の x を固定する */
   align-items: center;
   justify-content: center;
-  gap: 2.25rem;
+  gap: var(--item-gap);
 }
 
 .link {
+  position: relative;
   display: inline-flex;
   /* 縦組みでは column が横方向になる。印と軸線をラベルの左に外す */
   flex-direction: column;
@@ -73,12 +62,28 @@
 /* 軸線上に乗る印。現在地だけ塗りつぶす */
 .link::before {
   content: "";
-  width: 0.5rem;
-  height: 0.5rem;
+  width: var(--tick-size);
+  height: var(--tick-size);
   border: 1px solid currentColor;
   background: transparent;
   clip-path: var(--squircle);
   transition: background-color 0.25s, transform 0.25s;
+}
+
+/* 軸線は印と同じ要素の子にして、印の中心から生やす。
+   親の座標系を共有するので、文字サイズが変わってもずれない。
+   上下に項目間隔の半分ずつ伸ばして隣の線と継ぎ目なくつながる */
+.link::after {
+  content: "";
+  position: absolute;
+  right: calc(var(--tick-size) / 2);
+  transform: translateX(50%);
+  top: calc(var(--item-gap) / -2);
+  bottom: calc(var(--item-gap) / -2);
+  width: 1px;
+  background: var(--color-ink);
+  opacity: 0.22;
+  z-index: -1;
 }
 
 .link:hover {

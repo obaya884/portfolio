@@ -14,7 +14,6 @@
 
   /* 画面幅に追従させる。固定 px にすると狭い画面で破綻する */
   --step-hero: clamp(2.75rem, 11vw, 7.5rem);
-  --step-sub: clamp(1.15rem, 2.6vw, 1.9rem);
   --step-title: clamp(1.75rem, 4.5vw, 3rem);
   --step-item: clamp(1.1rem, 2vw, 1.45rem);
   /* 和文は同じ級数でも欧文より小さく見えるので下限を上げてある */

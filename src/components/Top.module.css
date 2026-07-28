@@ -23,15 +23,6 @@
   max-width: 48rem;
 }
 
-.eyebrow {
-  font-family: var(--font-meta);
-  font-size: var(--step-meta);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--color-ink-soft);
-  margin: 0 0 clamp(0.75rem, 2vh, 1.5rem);
-}
-
 .name {
   font-size: var(--step-hero);
   font-weight: 600;
@@ -41,13 +32,14 @@
   max-width: 9ch;
 }
 
+/* Top 専用のサイズを持たせず、カード見出しと同じ段を使う */
 .role {
-  font-size: var(--step-sub);
+  font-size: var(--step-item);
   font-weight: 400;
   letter-spacing: -0.01em;
-  line-height: 1.45;
+  line-height: 1.5;
   margin: clamp(1rem, 2.5vh, 1.75rem) 0 0;
-  max-width: 24ch;
+  max-width: 30ch;
 }
 
 .facts {

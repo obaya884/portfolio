@@ -62,7 +62,6 @@ function Top() {
         <Particles className={styles.particles} options={PARTICLE_OPTIONS} />
       </ParticlesProvider>
       <div className={styles.content}>
-        <p className={styles.eyebrow}>Portfolio</p>
         <h1 className={styles.name}>Takumi Obayashi</h1>
         <p className={styles.role}>iOS / Android アプリをつくっています</p>
         <ul className={styles.facts}>
