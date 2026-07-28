@@ -10,7 +10,7 @@ permissions:
   pages: write
   id-token: write
 
-# Let an in-flight deploy finish rather than cancelling it half-published.
+# 実行中のデプロイは中断せず完了させる（中途半端な公開状態を避けるため）
 concurrency:
   group: pages
   cancel-in-progress: false

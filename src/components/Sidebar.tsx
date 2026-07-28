@@ -1,6 +1,6 @@
 import styles from "./Sidebar.module.css";
 
-// Listed bottom-to-top because the whole bar is rotated 270deg.
+// バー全体を 270deg 回転させているため、並びは下から上の順になる
 const SECTIONS = ["Product", "Experience", "About", "Top"];
 
 function Sidebar() {

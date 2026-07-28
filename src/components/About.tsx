@@ -77,7 +77,7 @@ function About() {
   );
 }
 
-// Hatena has no FontAwesome glyph, so the mark is inlined.
+// はてなは FontAwesome にグリフが無いのでマークをインラインで持つ
 function HatenaIcon() {
   return (
     <svg

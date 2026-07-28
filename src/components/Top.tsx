@@ -4,18 +4,17 @@ import { loadSlim } from "@tsparticles/slim";
 
 import styles from "./Top.module.css";
 
-// ParticlesProvider throws if this callback is not referentially stable,
-// so it lives at module scope rather than inside render.
+// ParticlesProvider はこのコールバックの参照が変わると例外を投げるため、
+// render の内側ではなくモジュールスコープに置く
 const initParticlesEngine = (engine: Engine) => loadSlim(engine);
 
-// These values restate the particles.js defaults that react-particles-js
-// used to supply implicitly; tsparticles ships different ones.
+// tsparticles の既定値に任せると見た目が大きく変わるので明示的に指定している。
+// どれか一つでも削ると Top の印象が変わる
 const PARTICLE_OPTIONS: ISourceOptions = {
   fpsLimit: 60,
   detectRetina: true,
-  // tsparticles defaults to a fixed, viewport-covering canvas. The old
-  // react-particles-js canvas lived inside its container, so the effect stayed
-  // clipped to the Top section instead of bleeding over the ones below it.
+  // 必ず false にすること。有効だと tsparticles がキャンバスを
+  // position:fixed でビューポートに固定し、粒子が下のセクションにはみ出す
   fullScreen: { enable: false },
   particles: {
     number: { value: 60, density: { enable: true, width: 800, height: 800 } },
@@ -32,7 +31,6 @@ const PARTICLE_OPTIONS: ISourceOptions = {
     },
     move: {
       enable: true,
-      // particles.js defaulted to 6; halved for a calmer drift.
       speed: 3,
       direction: "none",
       random: false,

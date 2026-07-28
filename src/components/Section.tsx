@@ -3,7 +3,7 @@ import type { CSSProperties, ReactNode } from "react";
 import styles from "./Section.module.css";
 
 type SectionProps = {
-  /** Doubles as the anchor target the sidebar links to. */
+  /** サイドバーのリンク先となるアンカーを兼ねる */
   id: string;
   title: string;
   backgroundColor: string;

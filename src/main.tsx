@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-// Self-hosted so the page still makes no third-party requests. Subsets are
-// unicode-range gated, so only latin is actually downloaded.
+// サードパーティへのリクエストを発生させないためセルフホストしている。
+// サブセットは unicode-range で制御されるので、実際に落ちてくるのは latin のみ。
 import "@fontsource-variable/jost";
 
 import App from "./App";

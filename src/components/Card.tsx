@@ -10,7 +10,7 @@ type CardProps = {
   description: string;
   image: string;
   backgroundColor: string;
-  /** Omitted when there is nothing to link to, so no empty anchor is rendered. */
+  /** リンク先が無い場合は省略する。空のアンカーを描画しないため */
   link?: { url: string; icon: IconDefinition };
 };
 

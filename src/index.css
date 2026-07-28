@@ -1,4 +1,4 @@
-/* Replaces what react-router-hash-link's `smooth` prop used to do. */
+/* セクション間の移動は素のアンカーリンクなので、滑らかさはここで担保する */
 html {
   scroll-behavior: smooth;
 }

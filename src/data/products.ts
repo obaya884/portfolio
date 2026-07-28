@@ -15,8 +15,8 @@ export type Product = {
   description: string;
   backgroundColor: string;
   image: string;
-  /** Absent for anything that was never published, which is why the card
-   *  renders no link at all rather than an empty one. */
+  /** 未公開の作品では省略する。カードはリンク要素ごと描画しないので、
+   *  空のリンクは生まれない */
   link?: { url: string; icon: IconDefinition };
 };
 

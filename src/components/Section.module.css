@@ -1,4 +1,4 @@
-/* --section-background-color is set per section from the component. */
+/* --section-background-color はコンポーネント側からセクションごとに注入される */
 .section {
   height: 100vh;
   width: 100vw;
