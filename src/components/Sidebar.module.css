@@ -54,9 +54,10 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--color-ink);
-  opacity: 0.4;
-  transition: opacity 0.25s;
+  /* 減光は opacity ではなく色で行う。opacity は疑似要素にも乗算されるため、
+     軸線の濃さが選択状態で変わってしまう */
+  color: color-mix(in srgb, var(--color-ink) 45%, transparent);
+  transition: color 0.25s;
 }
 
 /* 軸線上に乗る印。現在地だけ塗りつぶす */
@@ -81,18 +82,18 @@
   top: calc(var(--item-gap) / -2);
   bottom: calc(var(--item-gap) / -2);
   width: 1px;
-  background: var(--color-ink);
-  opacity: 0.22;
+  /* 選択状態に関わらず一定 */
+  background: color-mix(in srgb, var(--color-ink) 22%, transparent);
   z-index: -1;
 }
 
 .link:hover {
-  opacity: 0.75;
+  color: color-mix(in srgb, var(--color-ink) 75%, transparent);
 }
 
 /* .link:hover と同じ詳細度にしないと、現在地をホバーした時に暗くなる */
 .link.active {
-  opacity: 1;
+  color: var(--color-ink);
   font-weight: 500;
 }
 
