@@ -6,8 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 個人ポートフォリオサイト。Vite + React 19 + TypeScript の静的 SPA で、GitHub Pages (https://obaya884.github.io/portfolio/) に公開している。表示テキストはすべて日本語。
 
-2026-07 に Create React App から Vite へ移行し、あわせて TypeScript 化した。
-
 ## コマンド
 
 パッケージマネージャは npm。
@@ -67,27 +65,25 @@ src/
 
 グローバルなスタイル（`body` など）は `src/index.css` に置く。
 
-CSS ネストは使わず、フラットなセレクタで書いている（`.link:hover path` など）。
+CSS ネストは使わず、フラットなセレクタで書く（`.link:hover path` など）。
 
 ### 書体は Jost をセルフホスト
 
-見出し・サイドバー・プロフィールは `"Jost Variable", sans-serif`。`main.tsx` の `import "@fontsource-variable/jost"` で読み込む。
+全面的に `"Jost Variable", sans-serif`。`main.tsx` の `import "@fontsource-variable/jost"` で読み込む。Jost は欧文のみなので、日本語は字単位で `sans-serif` にフォールバックする。
 
-以前は `Futura` を指定していたが、Futura は macOS/iOS にしか無いため Windows/Android では素の `sans-serif` にフォールバックし、幾何学サンセリフという書体の性格が失われていた。Jost は Futura を範に作られたオープンソース書体で、全環境で同じ見た目になる。
+**外部 CDN は使わずセルフホストすること。** このサイトはサードパーティへのリクエストがゼロで、それを保つのは意図的（プライバシーと表示速度の両面）。
 
-**外部 CDN は使わずセルフホストすること。** このサイトはサードパーティへのリクエストがゼロで、それを保つのは意図的（プライバシーと表示速度の両面）。以前あった Google Fonts の `@import` は同じ理由で削除した。
-
-カード本文だけは元から `sans-serif` 指定で、Jost にはしていない。
+`Futura` のような OS 同梱フォントを指定しないこと。macOS/iOS にしか無いため、他環境では素の `sans-serif` に落ちて書体の性格が失われる。
 
 ### FontAwesome
 
-アイコンは**使うものだけ個別に import してオブジェクトで渡す**（`icon={faGithub}`）。`library.add()` と文字列指定（`icon={["fab", "github"]}`）は使わない。全アイコンを読み込むとバンドルが 400KB → 2MB に膨らむ。
+アイコンは**使うものだけ個別に import してオブジェクトで渡す**（`icon={faGithub}`）。`library.add()` と文字列指定（`icon={["fab", "github"]}`）は使わない。理由は2つで、全アイコンを読み込むとバンドルが 400KB → 2MB に膨らむこと、文字列は解決に失敗しても無言でアイコンが消えるだけで気づけないこと。
 
-v7 でリネームされたものがある点に注意（`facebook-square` → `square-facebook`、`external-link-alt` → `up-right-from-square`）。文字列指定をやめたのはこれで無言に壊れたため。
+v7 でリネームされた名前がある（`facebook-square` → `square-facebook`、`external-link-alt` → `up-right-from-square`）。
 
 ### パーティクル演出
 
-`Top.tsx` が tsparticles で背景の粒子アニメーションを描く。設定値は particles.js 由来の見た目を再現するために明示指定してあるので、消すと別物になる。
+`Top.tsx` が tsparticles で背景の粒子アニメーションを描く。粒子数・色・不透明度・リンク距離・速度は明示指定してあり、消すと tsparticles の既定値に落ちて別物の見た目になる。
 
 `fullScreen: { enable: false }` は必須。tsparticles の既定は `position: fixed` の全画面キャンバスで、外すと粒子が下のセクションにまではみ出す。
 
