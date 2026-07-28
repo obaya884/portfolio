@@ -1,53 +1,68 @@
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { CSSProperties } from "react";
 
+import { squircleClip } from "./Squircle";
 import styles from "./Card.module.css";
 
 type CardProps = {
   title: string;
-  subtitle: string;
+  /** プラットフォームや在籍期間。等幅で組む短いラベル */
+  meta: string;
   description: string;
   image: string;
-  backgroundColor: string;
+  plateColor: string;
   /** リンク先が無い場合は省略する。空のアンカーを描画しないため */
-  link?: { url: string; icon: IconDefinition };
+  url?: string;
+  /** 公開済みであることを印で示すか */
+  live?: boolean;
 };
 
 function Card({
   title,
-  subtitle,
+  meta,
   description,
   image,
-  backgroundColor,
-  link,
+  plateColor,
+  url,
+  live = false,
 }: CardProps) {
   return (
-    <div className={styles.card}>
+    <article className={styles.card}>
       <div
-        className={styles.imageArea}
-        style={{ "--card-background-color": backgroundColor } as CSSProperties}
+        className={styles.plate}
+        style={
+          {
+            "--plate-color": plateColor,
+            clipPath: squircleClip,
+          } as CSSProperties
+        }
       >
-        <img src={image} alt={title} />
+        <img src={image} alt="" />
       </div>
-      <div className={styles.body}>
-        <div className={styles.heading}>
-          <h3 className={styles.title}>{title}</h3>
-          {link && (
+      <div className={styles.head}>
+        <h3 className={styles.title}>
+          {url ? (
             <a
-              className={styles.link}
-              href={link.url}
+              className={styles.titleLink}
+              href={url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FontAwesomeIcon icon={link.icon} />
+              {title}
             </a>
+          ) : (
+            title
           )}
-        </div>
-        <p className={styles.text}>{subtitle}</p>
-        <p className={styles.text}>{description}</p>
+        </h3>
+        <p
+          className={styles.meta}
+          style={{ "--squircle": squircleClip } as CSSProperties}
+        >
+          <span>{meta}</span>
+          {live && <span className={styles.live}>公開中</span>}
+        </p>
       </div>
-    </div>
+      <p className={styles.description}>{description}</p>
+    </article>
   );
 }
 

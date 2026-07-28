@@ -1,5 +1,3 @@
-import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
-
 import { experiences } from "../data/experiences";
 import Card from "./Card";
 import Section from "./Section";
@@ -7,17 +5,24 @@ import styles from "./Experience.module.css";
 
 function Experience() {
   return (
-    <Section id="experience" title="Experience" backgroundColor="#fd9347">
+    <Section
+      id="experience"
+      title="Experience"
+      backgroundColor="var(--color-experience)"
+      count={`${experiences.length} 社`}
+      navTargetId="product"
+      navLabel="Product へ移動"
+    >
       <div className={styles.grid}>
         {experiences.map((experience) => (
           <Card
             key={experience.companyName}
             title={experience.companyName}
-            subtitle={experience.period}
+            meta={experience.period}
             description={experience.description}
             image={experience.logo}
-            backgroundColor={experience.backgroundColor}
-            link={{ url: experience.url, icon: faUpRightFromSquare }}
+            plateColor={experience.backgroundColor}
+            url={experience.url}
           />
         ))}
       </div>

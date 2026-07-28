@@ -2,6 +2,9 @@ import type { Engine, ISourceOptions } from "@tsparticles/engine";
 import { Particles, ParticlesProvider } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
+import { experiences } from "../data/experiences";
+import { products } from "../data/products";
+import SectionNav from "./SectionNav";
 import styles from "./Top.module.css";
 
 // ParticlesProvider はこのコールバックの参照が変わると例外を投げるため、
@@ -51,22 +54,24 @@ const PARTICLE_OPTIONS: ISourceOptions = {
 };
 
 function Top() {
+  const published = products.filter((product) => product.link).length;
+
   return (
-    <div id="top" className={styles.top}>
+    <header id="top" className={styles.top}>
       <ParticlesProvider init={initParticlesEngine}>
         <Particles className={styles.particles} options={PARTICLE_OPTIONS} />
       </ParticlesProvider>
-      <h1 className={styles.title}>Takumi Obayashi</h1>
-      <h2 className={styles.subtitle}>portfolio</h2>
-      <div className={styles.scrollButton}>
-        <a href="#about">
-          <span></span>
-          <span></span>
-          <span></span>
-          Scroll
-        </a>
+      <div className={styles.content}>
+        <p className={styles.eyebrow}>Portfolio</p>
+        <h1 className={styles.name}>Takumi Obayashi</h1>
+        <p className={styles.role}>iOS / Android アプリをつくっています</p>
+        <ul className={styles.facts}>
+          <li>公開中 {published} プロダクト</li>
+          <li>インターン {experiences.length} 社</li>
+        </ul>
       </div>
-    </div>
+      <SectionNav targetId="about" label="Profile へ移動" />
+    </header>
   );
 }
 

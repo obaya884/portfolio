@@ -1,9 +1,5 @@
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: space-between;
-  margin: 0 0 0 auto;
-  height: 80%;
-  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
+  gap: clamp(2rem, 4vw, 3.25rem) clamp(2rem, 5vw, 4rem);
 }

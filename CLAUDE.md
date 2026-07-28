@@ -53,15 +53,39 @@ src/
 
 ### Section と Card
 
-`Experience` と `Product` は構造が同じなので、共通の `Section`（全画面の色付きセクション + 見出し）と `Card`（画像・タイトル・サブタイトル・説明・任意のリンク）を組み合わせて作る。カードのグリッド幅だけ各セクションが自前で持つ（Experience は 90%、Product は 1300px）。
+`About` / `Experience` / `Product` は共通の `Section`（全画面の色面 + 見出し + 任意の件数ラベル）で囲む。`Experience` と `Product` はさらに共通の `Card`（squircle プレート・タイトル・メタ・説明・任意のリンク）を並べる。グリッドの列数だけ各セクションが `auto-fill` で自前に持つ。
 
-`About` はカードグリッドではなく見出しの余白も違うので、`Section` は使わず独立している。
+`Card` の `live` を立てると「公開中」の印が付く。`Product` では `link` の有無から導出しているので、データに公開状態を持たせる必要は無い。
+
+### 形の語彙は squircle
+
+`components/Squircle.tsx` が iOS のアイコンと同じ超楕円を SVG の `clip-path` として一度だけ定義し、プレートとプロフィール写真、公開中の印がすべてこれを参照する。**`border-radius` の角丸で代用しないこと。** 曲率の連続性が違うため、この形がこのサイトの識別要素になっている。
+
+`SquircleDefs` はフローから外してあり、これを戻すと行ボックスが生まれてページ先頭に隙間が出る。
+
+### 寸法は clamp() で画面幅に追従させる
+
+文字サイズと余白は `index.css` の `--step-*` / `--gutter` / `--rail` にまとめてある。**固定 px やビューポート単位の決め打ちを新しく足さないこと。** 過去に `width: 1300px` と `font-size: 108px` の直書きで狭い画面が横に 900px はみ出していた。
+
+回転サイドバーは 60rem 未満では非表示にし、`--rail` も 0 になる。
+
+### セクションの送り
+
+`SectionNav` が各セクションの下端にシェブロンを置き、次のセクションへ送る。`Top → About → Experience → Product → Top` と一周し、最後の `Product` だけ `direction="up"` で山を反転させて先頭に戻す。
+
+**60rem 未満では非表示。** 狭い画面では素直にスクロールさせる方が速い。
+
+矢印だけでは行き先が分からないので `label` は必須にしてある。
 
 ### スタイリングは CSS Modules
 
 コンポーネントごとに `Xxx.module.css` を隣に置き、`import styles from "./Xxx.module.css"` して `className={styles.foo}` で当てる。Vite が標準サポートしているのでビルド設定は不要。CSS-in-JS のランタイムは無い。
 
-**動的な値は CSS カスタムプロパティで渡す。** セクションとカードの背景色だけが動的で、`style={{ "--card-background-color": color } as CSSProperties}` のように inline style で変数を注入し、CSS 側は `var(--card-background-color)` を参照する。TypeScript はカスタムプロパティを `CSSProperties` として認めないのでキャストが要る。
+**動的な値は CSS カスタムプロパティで渡す。** セクションとプレートの背景色だけが動的で、`style={{ "--plate-color": color } as CSSProperties}` のように inline style で変数を注入し、CSS 側は `var(--plate-color)` を参照する。TypeScript はカスタムプロパティを `CSSProperties` として認めないのでキャストが要る。
+
+4つのセクション色は `index.css` の `--color-top` / `--color-about` / `--color-experience` / `--color-product` に置いてある。**これは意図的に選ばれた配色なので変更しないこと。**
+
+英字を `text-transform: uppercase` で潰さないこと。`iOSアプリ` が `IOSアプリ` になるなど、表記を壊す。ラテン文字だけのラベル（アイブロウやサイドバー）に限って使う。
 
 グローバルなスタイル（`body` など）は `src/index.css` に置く。
 

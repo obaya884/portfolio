@@ -3,17 +3,20 @@ import Experience from "./components/Experience";
 import Product from "./components/Product";
 import Sidebar from "./components/Sidebar";
 import Top from "./components/Top";
-import styles from "./App.module.css";
+import { SquircleDefs } from "./components/Squircle";
 
 function App() {
   return (
-    <div className={styles.app}>
+    <>
+      <SquircleDefs />
       <Sidebar />
       <Top />
-      <About />
-      <Experience />
-      <Product />
-    </div>
+      <main>
+        <About />
+        <Experience />
+        <Product />
+      </main>
+    </>
   );
 }
 

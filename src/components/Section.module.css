@@ -1,16 +1,47 @@
 /* --section-background-color はコンポーネント側からセクションごとに注入される */
 .section {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
+  position: relative;
+  min-height: 100vh;
   background-color: var(--section-background-color);
-  font-family: "Jost Variable", sans-serif;
+  padding: clamp(3.5rem, 9vh, 7rem) var(--gutter) clamp(3.5rem, 9vh, 7rem);
+  padding-left: calc(var(--gutter) + var(--rail));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /* 内容が少ないセクションで下に大きな空白が残らないようにする */
+  justify-content: center;
+}
+
+/* 送りのシェブロンが本文に重ならないよう下側を空ける */
+@media (min-width: 60rem) {
+  .section {
+    padding-bottom: 9rem;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  border-bottom: 1px solid var(--color-ink);
+  padding-bottom: 0.9rem;
+  margin-bottom: clamp(2rem, 5vh, 3.5rem);
 }
 
 .title {
-  text-align: center;
-  font-weight: 500;
+  font-size: var(--step-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   margin: 0;
-  padding-top: 60px;
-  margin-bottom: 20px;
+  line-height: 1;
 }
+
+/* 件数は事実として意味があるので見出しに添える */
+.count {
+  font-family: var(--font-meta);
+  font-size: var(--step-meta);
+  letter-spacing: 0.06em;
+  color: var(--color-ink-soft);
+  margin: 0 0 0 auto;
+}
+

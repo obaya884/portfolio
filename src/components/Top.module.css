@@ -1,85 +1,65 @@
 .top {
   position: relative;
+  min-height: 100vh;
+  background-color: var(--color-top);
+  padding: clamp(4.5rem, 12vh, 8rem) var(--gutter) clamp(5.5rem, 14vh, 9rem);
+  padding-left: calc(var(--gutter) + var(--rail));
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-  background-color: #2fb37e;
-  font-family: "Jost Variable", sans-serif;
-}
-
-.title {
-  margin-top: 250px;
-  margin-bottom: 12px;
-  font-size: 108px;
-  font-weight: 500;
-  z-index: 2;
-}
-
-.subtitle {
-  margin: 0;
-  font-size: 76px;
-  font-weight: 500;
-  z-index: 2;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .particles {
   position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
   z-index: 1;
-  height: 100vh;
-  width: 100vw;
+  max-width: 48rem;
 }
 
-.scrollButton a {
-  padding-top: 70px;
-  position: absolute;
-  left: 50%;
-  bottom: 20px;
-  text-decoration: none;
-  z-index: 2;
-  color: #fff;
-  font-size: 1.3em;
+.eyebrow {
+  font-family: var(--font-meta);
+  font-size: var(--step-meta);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  margin: 0 0 clamp(0.75rem, 2vh, 1.5rem);
+}
+
+.name {
+  font-size: var(--step-hero);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  margin: 0;
+  max-width: 9ch;
+}
+
+.role {
+  font-size: var(--step-sub);
   font-weight: 400;
-  transform: translate(0, -50%);
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  margin: clamp(1rem, 2.5vh, 1.75rem) 0 0;
+  max-width: 24ch;
 }
 
-.scrollButton span {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 24px;
-  height: 24px;
-  margin-left: -12px;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-  transform: rotate(-45deg);
-  animation: sdb 2s infinite;
-  opacity: 0;
-  box-sizing: border-box;
+.facts {
+  font-family: var(--font-meta);
+  font-size: var(--step-meta);
+  letter-spacing: 0.08em;
+  color: var(--color-ink-soft);
+  margin: clamp(1.5rem, 4vh, 2.5rem) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+  list-style: none;
+  padding: 0;
 }
 
-.scrollButton span:nth-of-type(1) {
-  animation-delay: 0s;
-}
-
-.scrollButton span:nth-of-type(2) {
-  top: 16px;
-  animation-delay: 0.15s;
-}
-
-.scrollButton span:nth-of-type(3) {
-  top: 32px;
-  animation-delay: 0.3s;
-}
-
-@keyframes sdb {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}

@@ -1,61 +1,75 @@
-.about {
-  height: 100vh;
-  width: 100vw;
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+@media (min-width: 52rem) {
+  .layout {
+    grid-template-columns: clamp(200px, 24vw, 300px) minmax(0, 1fr);
+  }
+}
+
+.portrait {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  max-width: 300px;
+}
+
+.facts {
   margin: 0;
-  background-color: #81b4e7;
-  font-family: "Jost Variable", sans-serif;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.55rem clamp(1rem, 3vw, 2.25rem);
+  align-items: baseline;
 }
 
-.title {
-  text-align: center;
-  font-weight: 500;
+.facts dt {
+  font-family: var(--font-meta);
+  font-size: var(--step-meta);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+
+.facts dd {
   margin: 0;
-  padding-top: 60px;
-}
-
-.contents {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 70%;
-}
-
-.profile {
-  width: 70%;
-  height: 80%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.profileImage {
-  width: 300px;
-  height: 300px;
-}
-
-.profileText p {
-  font-family: "Jost Variable", sans-serif;
-  text-indent: -1em;
-  text-align: left;
+  line-height: 1.65;
 }
 
 .links {
-  width: 40%;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: clamp(2rem, 5vh, 3rem);
+  padding-top: clamp(1.5rem, 4vh, 2rem);
+  border-top: 1px solid var(--color-ink);
 }
 
 .links a {
-  color: #000;
-  text-decoration: none;
+  display: inline-flex;
+  color: var(--color-ink);
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  font-size: 1.5rem;
 }
 
-.links a:hover path {
-  fill: #fff;
+.links a:hover {
+  opacity: 1;
 }
 
-.icon {
-  font-size: 1.8em;
+.hatena {
+  width: 1.5em;
+  height: 1.5em;
+  fill: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .links a {
+    transition: none;
+  }
 }

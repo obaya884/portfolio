@@ -1,33 +1,54 @@
 .container {
-  position: fixed;
-  transform: rotate(270deg);
-  top: 50%;
-  left: -200px;
-  z-index: 3;
+  display: none;
 }
 
-.nav {
-  font-family: "Jost Variable", sans-serif;
-  font-weight: 500;
+/* 回転バーは横幅に余裕がある時だけ。狭い画面では本文の邪魔になる */
+@media (min-width: 60rem) {
+  .container {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--rail);
+    z-index: 3;
+  }
 }
 
 .list {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
+  height: 100%;
   margin: 0;
-}
-
-.item {
-  font-size: 1.2em;
-  margin-right: 60px;
+  padding: clamp(2rem, 6vh, 3.5rem) 0;
+  box-sizing: border-box;
+  list-style: none;
+  /* 縦組みにして下から上へ読ませる。transform より崩れにくい */
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  /* 縦組みでは row が縦方向になる */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2.25rem;
 }
 
 .link {
-  color: #000;
+  font-family: var(--font-meta);
+  font-size: var(--step-meta);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   text-decoration: none;
+  color: var(--color-ink);
+  opacity: 0.55;
+  transition: opacity 0.2s;
 }
 
 .link:hover {
-  color: #fff;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
 }
