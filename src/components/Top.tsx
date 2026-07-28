@@ -32,7 +32,8 @@ const PARTICLE_OPTIONS: ISourceOptions = {
     },
     move: {
       enable: true,
-      speed: 6,
+      // particles.js defaulted to 6; halved for a calmer drift.
+      speed: 3,
       direction: "none",
       random: false,
       straight: false,
