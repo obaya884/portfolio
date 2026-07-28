@@ -22,16 +22,13 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    name: "キモチの切り替えカタログ",
-    genre: "webページ",
+    name: "Tetra",
+    genre: "iOSアプリ",
     description:
-      "初めて自身で制作したwebページ。気分転換したい時などにその方法を閲覧することができる。HTML/CSS, jQueryで実装した。",
-    backgroundColor: "#A4BE3C",
-    image: kimochiNoKirikaeCatalog,
-    link: {
-      url: "https://kimochikirikae-catalog.com/",
-      icon: faUpRightFromSquare,
-    },
+      "UIにこだわったシンプルなTODOアプリ。画面が4分割されており、それぞれの領域にタスクを登録することができる。",
+    backgroundColor: "#7EBEFF",
+    image: tetra,
+    link: { url: "https://apps.apple.com/jp/app/id1490807423", icon: faApple },
   },
   {
     name: "シアターコンシェルジュ",
@@ -43,13 +40,16 @@ export const products: Product[] = [
     link: { url: "https://apps.apple.com/jp/app/id1483325397", icon: faApple },
   },
   {
-    name: "Tetra",
-    genre: "iOSアプリ",
+    name: "キモチの切り替えカタログ",
+    genre: "webページ",
     description:
-      "UIにこだわったシンプルなTODOアプリ。画面が4分割されており、それぞれの領域にタスクを登録することができる。",
-    backgroundColor: "#7EBEFF",
-    image: tetra,
-    link: { url: "https://apps.apple.com/jp/app/id1490807423", icon: faApple },
+      "初めて自身で制作したwebページ。気分転換したい時などにその方法を閲覧することができる。HTML/CSS, jQueryで実装した。",
+    backgroundColor: "#A4BE3C",
+    image: kimochiNoKirikaeCatalog,
+    link: {
+      url: "https://kimochikirikae-catalog.com/",
+      icon: faUpRightFromSquare,
+    },
   },
   {
     name: "Charm Me!",

@@ -23,6 +23,7 @@ function Experience() {
             image={experience.logo}
             plateColor={experience.backgroundColor}
             url={experience.url}
+            widePlate
           />
         ))}
       </div>

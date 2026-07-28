@@ -13,6 +13,7 @@ export type Experience = {
   logo: string;
 };
 
+/** 開始が古い順に並べる。表示順がそのままキャリアの軌跡になる */
 export const experiences: Experience[] = [
   {
     companyName: "ライフイズテック株式会社",
@@ -24,24 +25,6 @@ export const experiences: Experience[] = [
     logo: lifeistechLogo,
   },
   {
-    companyName: "チームラボ株式会社",
-    url: "https://www.team-lab.com/",
-    period: "2019/09/02~09/13",
-    description:
-      "2週間のサマーインターンに参加。iOSアプリ開発の実案件に携わった。RxSwiftやReduxでの設計などの技術を学んだ。",
-    backgroundColor: "#FFF35F",
-    logo: teamlabLogo,
-  },
-  {
-    companyName: "株式会社グッドパッチ",
-    url: "https://goodpatch.com/ja/",
-    period: "2020/01/29",
-    description:
-      "1dayのデザインインターンに参加。ユーザーインタビューからプロトタイプ作成までのデザイン制作を体験した。",
-    backgroundColor: "#B1DAFF",
-    logo: goodpatchLogo,
-  },
-  {
     companyName: "freee株式会社",
     url: "https://corp.freee.co.jp/",
     period: "2019/08/19~08/29",
@@ -51,6 +34,15 @@ export const experiences: Experience[] = [
     logo: freeeLogo,
   },
   {
+    companyName: "チームラボ株式会社",
+    url: "https://www.team-lab.com/",
+    period: "2019/09/02~09/13",
+    description:
+      "2週間のサマーインターンに参加。iOSアプリ開発の実案件に携わった。RxSwiftやReduxでの設計などの技術を学んだ。",
+    backgroundColor: "#FFF35F",
+    logo: teamlabLogo,
+  },
+  {
     companyName: "株式会社インゲージ",
     url: "https://ingage.co.jp/",
     period: "2019/10~2020/01",
@@ -58,5 +50,14 @@ export const experiences: Experience[] = [
       "ソフトウェアエンジニアインターンとして自社サービスである「Re:Lation」の機能開発に携わった。使用技術はAndularJSとRails。",
     backgroundColor: "#FFD9AD",
     logo: ingageLogo,
+  },
+  {
+    companyName: "株式会社グッドパッチ",
+    url: "https://goodpatch.com/ja/",
+    period: "2020/01/29",
+    description:
+      "1dayのデザインインターンに参加。ユーザーインタビューからプロトタイプ作成までのデザイン制作を体験した。",
+    backgroundColor: "#B1DAFF",
+    logo: goodpatchLogo,
   },
 ];

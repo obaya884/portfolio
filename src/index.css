@@ -16,9 +16,10 @@
   --step-hero: clamp(2.75rem, 11vw, 7.5rem);
   --step-sub: clamp(1.15rem, 2.6vw, 1.9rem);
   --step-title: clamp(1.75rem, 4.5vw, 3rem);
-  --step-item: clamp(1.05rem, 2vw, 1.35rem);
-  --step-body: clamp(0.875rem, 1.1vw, 0.95rem);
-  --step-meta: 0.7rem;
+  --step-item: clamp(1.1rem, 2vw, 1.45rem);
+  /* 和文は同じ級数でも欧文より小さく見えるので下限を上げてある */
+  --step-body: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  --step-meta: 0.75rem;
 
   --gutter: clamp(1.5rem, 6vw, 6rem);
   /* 回転サイドバーの逃げ幅。バーを出す画面幅でのみ確保する */

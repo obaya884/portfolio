@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-import { squircleClip } from "./Squircle";
+import { squircleClip, squircleWideClip } from "./Squircle";
 import styles from "./Card.module.css";
 
 type CardProps = {
@@ -14,6 +14,8 @@ type CardProps = {
   url?: string;
   /** 公開済みであることを印で示すか */
   live?: boolean;
+  /** 横長の絵（会社ロゴなど）を載せるプレートにするか */
+  widePlate?: boolean;
 };
 
 function Card({
@@ -24,15 +26,16 @@ function Card({
   plateColor,
   url,
   live = false,
+  widePlate = false,
 }: CardProps) {
   return (
     <article className={styles.card}>
       <div
-        className={styles.plate}
+        className={`${styles.plate} ${widePlate ? styles.plateWide : ""}`}
         style={
           {
             "--plate-color": plateColor,
-            clipPath: squircleClip,
+            clipPath: widePlate ? squircleWideClip : squircleClip,
           } as CSSProperties
         }
       >

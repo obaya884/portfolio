@@ -30,19 +30,44 @@ const SOCIAL_LINKS: { name: string; url: string; icon: IconDefinition }[] = [
 
 const HATENA_BLOG_URL = "https://t-6bar10.hatenablog.com/";
 
-const FACTS: { label: string; value: string }[] = [
+/** value は1行の値、items は語彙単位で並べて走査させたい値 */
+type Fact = { label: string; value?: string; items?: string[] };
+
+const FACTS: Fact[] = [
   { label: "Name", value: "大林 拓実 / ろばーと" },
   { label: "Birthday", value: "1996/7/27" },
   { label: "From", value: "滋賀生まれ練馬育ち" },
   {
     label: "Skill",
-    value:
-      "iOS/Swift, Android/Kotlin, HTML5/CSS3, JavaScript(React, Vue), Ruby(Rails), Python, C++, Git/GitHub, Adobe Illustrator, Adobe XD",
+    items: [
+      "iOS / Swift",
+      "Android / Kotlin",
+      "HTML5 / CSS3",
+      "JavaScript",
+      "React",
+      "Vue",
+      "Ruby on Rails",
+      "Python",
+      "C++",
+      "Git / GitHub",
+      "Adobe Illustrator",
+      "Adobe XD",
+    ],
   },
   {
     label: "Like",
-    value:
-      "Movie, Anime, Special Effect Films, Photo, Book, Life hack, Basketball, Football, LiSA, Perfume",
+    items: [
+      "Movie",
+      "Anime",
+      "Special Effect Films",
+      "Photo",
+      "Book",
+      "Life hack",
+      "Basketball",
+      "Football",
+      "LiSA",
+      "Perfume",
+    ],
   },
 ];
 
@@ -67,7 +92,17 @@ function About() {
             {FACTS.map((fact) => (
               <div key={fact.label} style={{ display: "contents" }}>
                 <dt>{fact.label}</dt>
-                <dd>{fact.value}</dd>
+                <dd>
+                  {fact.items ? (
+                    <ul className={styles.tags}>
+                      {fact.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    fact.value
+                  )}
+                </dd>
               </div>
             ))}
           </dl>
