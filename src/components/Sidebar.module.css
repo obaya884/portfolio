@@ -1,0 +1,110 @@
+.container {
+  display: none;
+}
+
+/* 回転バーは横幅に余裕がある時だけ。狭い画面では本文の邪魔になる */
+@media (min-width: 60rem) {
+  .container {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--rail);
+    /* 画面左端に貼り付かないよう内側に寄せる */
+    padding-left: var(--rail-inset);
+    box-sizing: border-box;
+    z-index: 3;
+  }
+}
+
+.container {
+  --rail-inset: 1.75rem;
+  --tick-size: 0.5rem;
+  --item-gap: 2.25rem;
+}
+
+.list {
+  height: 100%;
+  margin: 0;
+  padding: clamp(2rem, 6vh, 3.5rem) 0;
+  box-sizing: border-box;
+  list-style: none;
+  /* 縦組みにして下から上へ読ませる。transform より崩れにくい */
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  /* 縦組みでは row が縦方向になる */
+  display: flex;
+  flex-direction: row;
+  /* 縦組みでは align-items が水平方向。始端に揃えて印の x を固定する */
+  align-items: center;
+  justify-content: center;
+  gap: var(--item-gap);
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  /* 縦組みでは column が横方向になる。印と軸線をラベルの左に外す */
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-meta);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  /* 減光は opacity ではなく色で行う。opacity は疑似要素にも乗算されるため、
+     軸線の濃さが選択状態で変わってしまう */
+  color: color-mix(in srgb, var(--color-ink) 45%, transparent);
+  transition: color 0.25s;
+}
+
+/* 軸線上に乗る印。現在地だけ塗りつぶす */
+.link::before {
+  content: "";
+  width: var(--tick-size);
+  height: var(--tick-size);
+  border: 1px solid currentColor;
+  background: transparent;
+  clip-path: var(--squircle);
+  transition: background-color 0.25s, transform 0.25s;
+}
+
+/* 軸線は印と同じ要素の子にして、印の中心から生やす。
+   親の座標系を共有するので、文字サイズが変わってもずれない。
+   上下に項目間隔の半分ずつ伸ばして隣の線と継ぎ目なくつながる */
+.link::after {
+  content: "";
+  position: absolute;
+  right: calc(var(--tick-size) / 2);
+  transform: translateX(50%);
+  top: calc(var(--item-gap) / -2);
+  bottom: calc(var(--item-gap) / -2);
+  width: 1px;
+  /* 選択状態に関わらず一定 */
+  background: color-mix(in srgb, var(--color-ink) 22%, transparent);
+  z-index: -1;
+}
+
+.link:hover {
+  color: color-mix(in srgb, var(--color-ink) 75%, transparent);
+}
+
+/* .link:hover と同じ詳細度にしないと、現在地をホバーした時に暗くなる */
+.link.active {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+.link.active::before {
+  background: currentColor;
+  transform: scale(1.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .link::before {
+    transition: none;
+  }
+}

@@ -1,15 +1,72 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+:root {
+  /* セクション色。既存のアイデンティティなので変更しないこと */
+  --color-top: #2fb37e;
+  --color-about: #81b4e7;
+  --color-experience: #fd9347;
+  --color-product: #9ba2ff;
+
+  --color-ink: #101512;
+  --color-ink-soft: #101512b3;
+  --color-plate: #fff;
+
+  --font-display: "Jost Variable", sans-serif;
+  --font-meta: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  /* 画面幅に追従させる。固定 px にすると狭い画面で破綻する */
+  --step-hero: clamp(2.75rem, 11vw, 7.5rem);
+  --step-title: clamp(1.75rem, 4.5vw, 3rem);
+  --step-item: clamp(1.1rem, 2vw, 1.45rem);
+  /* 和文は同じ級数でも欧文より小さく見えるので下限を上げてある */
+  --step-body: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  --step-meta: 0.75rem;
+
+  --gutter: clamp(1.5rem, 6vw, 6rem);
+  /* 回転サイドバーの逃げ幅。バーを出す画面幅でのみ確保する */
+  --rail: 0rem;
+}
+
+@media (min-width: 60rem) {
+  :root {
+    --rail: 5.5rem;
+  }
+}
+
+/* セクション間の移動は素のアンカーリンクなので、滑らかさはここで担保する */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: var(--step-body);
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* Jost は欧文のみ。和文は字単位でここにフォールバックする */
+body {
+  font-family: var(--font-display), "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Noto Sans JP", "Yu Gothic Medium", meiryo, sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
 }

@@ -1,0 +1,78 @@
+.nav {
+  display: none;
+}
+
+/* スライドショー的な送りは横幅に余裕がある画面だけ。狭い画面では素直にスクロールさせる */
+@media (min-width: 60rem) {
+  .nav {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: clamp(2rem, 5vh, 3.25rem);
+    width: 24px;
+    height: 56px;
+    margin-left: -12px;
+    color: var(--color-ink);
+  }
+}
+
+.nav span {
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-left: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(-45deg);
+  animation: chevron 2s infinite;
+  opacity: 0;
+  box-sizing: border-box;
+}
+
+.nav span:nth-of-type(1) {
+  top: 0;
+  animation-delay: 0s;
+}
+
+.nav span:nth-of-type(2) {
+  top: 16px;
+  animation-delay: 0.15s;
+}
+
+.nav span:nth-of-type(3) {
+  top: 32px;
+  animation-delay: 0.3s;
+}
+
+/* 山を反転させ、点滅も下から上へ流す */
+.up span {
+  transform: rotate(135deg);
+}
+
+.up span:nth-of-type(1) {
+  animation-delay: 0.3s;
+}
+
+.up span:nth-of-type(3) {
+  animation-delay: 0s;
+}
+
+@keyframes chevron {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav span {
+    animation: none;
+    opacity: 0.55;
+  }
+}

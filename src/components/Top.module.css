@@ -1,0 +1,57 @@
+.top {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-top);
+  padding: clamp(4.5rem, 12vh, 8rem) var(--gutter) clamp(5.5rem, 14vh, 9rem);
+  padding-left: calc(var(--gutter) + var(--rail));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 48rem;
+}
+
+.name {
+  font-size: var(--step-hero);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  margin: 0;
+  max-width: 9ch;
+}
+
+/* Top 専用のサイズを持たせず、カード見出しと同じ段を使う */
+.role {
+  font-size: var(--step-item);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  margin: clamp(1rem, 2.5vh, 1.75rem) 0 0;
+  max-width: 30ch;
+}
+
+.facts {
+  font-family: var(--font-meta);
+  font-size: var(--step-meta);
+  letter-spacing: 0.08em;
+  color: var(--color-ink-soft);
+  margin: clamp(1.5rem, 4vh, 2.5rem) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+  list-style: none;
+  padding: 0;
+}
+
