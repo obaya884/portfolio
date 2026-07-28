@@ -1,46 +1,71 @@
 import React from "react";
 import styled from "styled-components";
-import { HashLink } from "react-router-hash-link";
-import Particles from "react-particles-js";
+import { Particles, ParticlesProvider } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+
+// ParticlesProvider throws if this callback is not referentially stable,
+// so it lives at module scope rather than inside render.
+const initParticlesEngine = (engine) => loadSlim(engine);
+
+// These values restate the particles.js defaults that react-particles-js
+// used to supply implicitly; tsparticles ships different ones.
+const PARTICLE_OPTIONS = {
+  fpsLimit: 60,
+  detectRetina: true,
+  // tsparticles defaults to a fixed, viewport-covering canvas. The old
+  // react-particles-js canvas lived inside its container, so the effect stayed
+  // clipped to the Top section instead of bleeding over the ones below it.
+  fullScreen: { enable: false },
+  particles: {
+    number: { value: 60, density: { enable: true, width: 800, height: 800 } },
+    color: { value: "#ffffff" },
+    shape: { type: "circle" },
+    opacity: { value: 0.5 },
+    size: { value: { min: 1, max: 3 } },
+    links: {
+      enable: true,
+      distance: 150,
+      color: "#ffffff",
+      opacity: 0.4,
+      width: 1,
+    },
+    move: {
+      enable: true,
+      speed: 6,
+      direction: "none",
+      random: false,
+      straight: false,
+      outModes: { default: "out" },
+    },
+  },
+  interactivity: {
+    events: {
+      onHover: { enable: true, mode: "connect" },
+      onClick: { enable: true, mode: "repulse" },
+    },
+    modes: {
+      connect: { distance: 80, links: { opacity: 0.5 }, radius: 60 },
+      repulse: { distance: 200, duration: 0.4 },
+    },
+  },
+};
 
 class Top extends React.Component {
   render() {
     return (
       <TopContainer id="top">
-        <Particles
-          params={{
-            particles: {
-              number: {
-                value: 60,
-                limit: 200,
-              },
-              size: {
-                value: 3,
-              },
-            },
-            interactivity: {
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: "connect",
-                },
-                onclick: {
-                  enable: true,
-                  mode: "repulse",
-                },
-              },
-            },
-          }}
-        />
+        <ParticlesProvider init={initParticlesEngine}>
+          <Particles id="tsparticles" options={PARTICLE_OPTIONS} />
+        </ParticlesProvider>
         <h1>Takumi Obayashi</h1>
         <h2>portfolio</h2>
         <ScrollButton>
-          <HashLink smooth to="/#about">
+          <a href="#about">
             <span></span>
             <span></span>
             <span></span>
             Scroll
-          </HashLink>
+          </a>
         </ScrollButton>
       </TopContainer>
     );

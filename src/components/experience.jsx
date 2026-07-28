@@ -49,12 +49,12 @@ class Experience extends React.Component {
 
     const cardItems = internInfos.map((internInfo) => (
       <ExperienceCard
+        key={internInfo.company_name}
         company_name={internInfo.company_name}
         external_link_url={internInfo.external_link_url}
         period={internInfo.period}
         desc={internInfo.desc}
         background_color={internInfo.background_color}
-        hero_image={internInfo.hero_image}
       ></ExperienceCard>
     ));
 

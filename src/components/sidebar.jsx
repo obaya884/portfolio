@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { HashLink } from "react-router-hash-link";
 
 class Sidebar extends React.Component {
   render() {
@@ -9,24 +8,16 @@ class Sidebar extends React.Component {
         <Sidenav>
           <ul>
             <li>
-              <HashLink smooth to="/#product">
-                Product
-              </HashLink>
+              <a href="#product">Product</a>
             </li>
             <li>
-              <HashLink smooth to="/#experience">
-                Experience
-              </HashLink>
+              <a href="#experience">Experience</a>
             </li>
             <li>
-              <HashLink smooth to="/#about">
-                About
-              </HashLink>
+              <a href="#about">About</a>
             </li>
             <li>
-              <HashLink smooth to="/#top">
-                Top
-              </HashLink>
+              <a href="#top">Top</a>
             </li>
           </ul>
         </Sidenav>

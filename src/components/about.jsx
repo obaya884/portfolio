@@ -2,6 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import icon from "../images/icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTwitter,
+  faInstagram,
+  faSquareFacebook,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
 
 class About extends React.Component {
   render() {
@@ -34,10 +40,7 @@ class About extends React.Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FontAwesomeIcon
-                className="font-awesome-icon"
-                icon={["fab", "twitter"]}
-              />
+              <FontAwesomeIcon className="font-awesome-icon" icon={faTwitter} />
             </a>
             <a
               href="https://www.instagram.com/obaya884photo/"
@@ -46,7 +49,7 @@ class About extends React.Component {
             >
               <FontAwesomeIcon
                 className="font-awesome-icon"
-                icon={["fab", "instagram"]}
+                icon={faInstagram}
               />
             </a>
             <a
@@ -56,7 +59,7 @@ class About extends React.Component {
             >
               <FontAwesomeIcon
                 className="font-awesome-icon"
-                icon={["fab", "facebook-square"]}
+                icon={faSquareFacebook}
               />
             </a>
             <a
@@ -64,10 +67,7 @@ class About extends React.Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FontAwesomeIcon
-                className="font-awesome-icon"
-                icon={["fab", "github"]}
-              />
+              <FontAwesomeIcon className="font-awesome-icon" icon={faGithub} />
             </a>
             <svg
               xmlns="http://www.w3.org/2000/svg"

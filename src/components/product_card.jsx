@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faApple, faGooglePlay } from "@fortawesome/free-brands-svg-icons";
+import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 import kimochiNoKirikaeCatalog from "../images/kimochi-no-kirikae-catalog.svg";
 import theaterConcierge from "../images/theater-concierge.svg";
@@ -28,28 +30,31 @@ class ProductCard extends React.Component {
 
     let icon;
     if (this.props.genre === "iOSアプリ") {
-      icon = ["fab", "apple"];
+      icon = faApple;
     } else if (this.props.genre === "webページ") {
-      icon = ["fas", "external-link-alt"];
+      icon = faUpRightFromSquare;
     } else if (this.props.genre === "Androidアプリ") {
-      icon = ["fab", "google-play"];
+      icon = faGooglePlay;
     }
 
     return (
       <CardContainer>
-        <ImageContainer background_color={this.props.background_color}>
-          <img src={image} alt={this.props.company_name}></img>
+        <ImageContainer $backgroundColor={this.props.background_color}>
+          <img src={image} alt={this.props.name}></img>
         </ImageContainer>
         <DescriptionContainer>
           <div>
             <h3>{this.props.name}</h3>
-            <a
-              href={this.props.external_link_url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon className="font-awesome-icon" icon={icon} />
-            </a>
+            {/* Unreleased products have no store link and no matching icon. */}
+            {icon && this.props.external_link_url && (
+              <a
+                href={this.props.external_link_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon className="font-awesome-icon" icon={icon} />
+              </a>
+            )}
           </div>
           <p>{this.props.genre}</p>
           <p>{this.props.desc}</p>
@@ -72,7 +77,7 @@ const CardContainer = styled.div`
 const ImageContainer = styled.div`
   width: 100%;
   height: 180px;
-  background-color: ${(props) => props.background_color};
+  background-color: ${(props) => props.$backgroundColor};
   border-radius: 10px 10px 0px 0px;
   display: flex;
   justify-content: center;

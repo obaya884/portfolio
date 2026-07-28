@@ -58,12 +58,12 @@ class Product extends React.Component {
 
     const cardItems = productInfos.map((productInfo) => (
       <ProductCard
+        key={productInfo.name}
         name={productInfo.name}
         external_link_url={productInfo.external_link_url}
         genre={productInfo.genre}
         desc={productInfo.desc}
         background_color={productInfo.background_color}
-        hero_image={productInfo.hero_image}
       ></ProductCard>
     ));
 

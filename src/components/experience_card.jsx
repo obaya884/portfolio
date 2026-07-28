@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import lifeistechLogo from "../images/lifeistech-logo.svg";
 import freeeLogo from "../images/freee-logo.svg";
 import teamlabLogo from "../images/teamlab-logo.svg";
@@ -24,7 +25,7 @@ class ExperienceCard extends React.Component {
 
     return (
       <CardContainer>
-        <ImageContainer background_color={this.props.background_color}>
+        <ImageContainer $backgroundColor={this.props.background_color}>
           <img src={company_image} alt={this.props.company_name}></img>
         </ImageContainer>
         <DescriptionContainer>
@@ -37,7 +38,7 @@ class ExperienceCard extends React.Component {
             >
               <FontAwesomeIcon
                 className="font-awesome-icon"
-                icon={["fas", "external-link-alt"]}
+                icon={faUpRightFromSquare}
               />
             </a>
           </div>
@@ -62,7 +63,7 @@ const CardContainer = styled.div`
 const ImageContainer = styled.div`
   width: 100%;
   height: 180px;
-  background-color: ${(props) => props.background_color};
+  background-color: ${(props) => props.$backgroundColor};
   border-radius: 10px 10px 0px 0px;
   display: flex;
   justify-content: center;
