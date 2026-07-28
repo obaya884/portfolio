@@ -1,29 +1,22 @@
-import React from "react";
 import styled from "styled-components";
 
-class Sidebar extends React.Component {
-  render() {
-    return (
-      <SideContainer>
-        <Sidenav>
-          <ul>
-            <li>
-              <a href="#product">Product</a>
+// Listed bottom-to-top because the whole bar is rotated 270deg.
+const SECTIONS = ["Product", "Experience", "About", "Top"];
+
+function Sidebar() {
+  return (
+    <SideContainer>
+      <Sidenav>
+        <ul>
+          {SECTIONS.map((section) => (
+            <li key={section}>
+              <a href={`#${section.toLowerCase()}`}>{section}</a>
             </li>
-            <li>
-              <a href="#experience">Experience</a>
-            </li>
-            <li>
-              <a href="#about">About</a>
-            </li>
-            <li>
-              <a href="#top">Top</a>
-            </li>
-          </ul>
-        </Sidenav>
-      </SideContainer>
-    );
-  }
+          ))}
+        </ul>
+      </Sidenav>
+    </SideContainer>
+  );
 }
 
 const SideContainer = styled.div`

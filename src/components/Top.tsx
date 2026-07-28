@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
 import { Particles, ParticlesProvider } from "@tsparticles/react";
+import type { Engine, ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
+import styled from "styled-components";
 
 // ParticlesProvider throws if this callback is not referentially stable,
 // so it lives at module scope rather than inside render.
-const initParticlesEngine = (engine) => loadSlim(engine);
+const initParticlesEngine = (engine: Engine) => loadSlim(engine);
 
 // These values restate the particles.js defaults that react-particles-js
 // used to supply implicitly; tsparticles ships different ones.
-const PARTICLE_OPTIONS = {
+const PARTICLE_OPTIONS: ISourceOptions = {
   fpsLimit: 60,
   detectRetina: true,
   // tsparticles defaults to a fixed, viewport-covering canvas. The old
@@ -50,26 +50,24 @@ const PARTICLE_OPTIONS = {
   },
 };
 
-class Top extends React.Component {
-  render() {
-    return (
-      <TopContainer id="top">
-        <ParticlesProvider init={initParticlesEngine}>
-          <Particles id="tsparticles" options={PARTICLE_OPTIONS} />
-        </ParticlesProvider>
-        <h1>Takumi Obayashi</h1>
-        <h2>portfolio</h2>
-        <ScrollButton>
-          <a href="#about">
-            <span></span>
-            <span></span>
-            <span></span>
-            Scroll
-          </a>
-        </ScrollButton>
-      </TopContainer>
-    );
-  }
+function Top() {
+  return (
+    <TopContainer id="top">
+      <ParticlesProvider init={initParticlesEngine}>
+        <Particles id="tsparticles" options={PARTICLE_OPTIONS} />
+      </ParticlesProvider>
+      <h1>Takumi Obayashi</h1>
+      <h2>portfolio</h2>
+      <ScrollButton>
+        <a href="#about">
+          <span></span>
+          <span></span>
+          <span></span>
+          Scroll
+        </a>
+      </ScrollButton>
+    </TopContainer>
+  );
 }
 
 const TopContainer = styled.div`
@@ -113,7 +111,6 @@ const ScrollButton = styled.div`
     color: #fff;
     font-size: 1.3em;
     font-weight: 400;
-    -webkit-transform: translate(0, -50%);
     transform: translate(0, -50%);
   }
   span {
@@ -125,37 +122,21 @@ const ScrollButton = styled.div`
     margin-left: -12px;
     border-left: 1px solid #fff;
     border-bottom: 1px solid #fff;
-    -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    -webkit-animation: sdb 2s infinite;
     animation: sdb 2s infinite;
     opacity: 0;
     box-sizing: border-box;
 
     :nth-of-type(1) {
-      -webkit-animation-delay: 0s;
       animation-delay: 0s;
     }
     :nth-of-type(2) {
       top: 16px;
-      -webkit-animation-delay: 0.15s;
       animation-delay: 0.15s;
     }
     :nth-of-type(3) {
       top: 32px;
-      -webkit-animation-delay: 0.3s;
       animation-delay: 0.3s;
-    }
-  }
-  @-webkit-keyframes sdb {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
     }
   }
   @keyframes sdb {
