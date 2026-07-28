@@ -11,8 +11,30 @@
     left: 0;
     height: 100vh;
     width: var(--rail);
+    /* 画面左端に貼り付かないよう内側に寄せる */
+    padding-left: 1.75rem;
+    box-sizing: border-box;
     z-index: 3;
   }
+}
+
+/* セクションを縦に送る構成なので、進行を示す軸線を通す。
+   --tick-center は印の中心に合わせた実測値 */
+.container {
+  --tick-center: 2.5625rem;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--tick-center) - 0.5px);
+  top: 50%;
+  /* 項目群とほぼ同じ高さ。文字量で決まるのでビューポート比にはしない */
+  height: 26rem;
+  transform: translateY(-50%);
+  width: 1px;
+  background: var(--color-ink);
+  opacity: 0.22;
 }
 
 .list {
@@ -33,22 +55,48 @@
 }
 
 .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
   font-family: var(--font-meta);
-  font-size: var(--step-meta);
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-ink);
-  opacity: 0.55;
-  transition: opacity 0.2s;
+  opacity: 0.4;
+  transition: opacity 0.25s;
+}
+
+/* 軸線上に乗る印。現在地だけ塗りつぶす */
+.link::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 1px solid currentColor;
+  background: transparent;
+  clip-path: var(--squircle);
+  transition: background-color 0.25s, transform 0.25s;
 }
 
 .link:hover {
+  opacity: 0.75;
+}
+
+/* .link:hover と同じ詳細度にしないと、現在地をホバーした時に暗くなる */
+.link.active {
   opacity: 1;
+  font-weight: 500;
+}
+
+.link.active::before {
+  background: currentColor;
+  transform: scale(1.35);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .link {
+  .link,
+  .link::before {
     transition: none;
   }
 }
