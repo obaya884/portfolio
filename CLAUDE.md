@@ -23,6 +23,8 @@ npm run lint       # eslint
 
 デプロイは master への push で自動実行される。手動デプロイのコマンドは無い。
 
+`package.json` の `overrides.minimatch` は GHSA-g3hv-75wg-m249 対策。修正は minimatch 11 にしか無いが、eslint / typescript-eslint が `^10.2.x` を要求しているので強制している。両者が 11 以上を要求するようになったら外すこと。
+
 ## アーキテクチャ
 
 ### ルーティングは存在しない
