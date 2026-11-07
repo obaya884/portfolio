@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "ask": [
+      "Bash(git push)",
+      "Bash(git push origin)",
+      "Bash(git push * HEAD)",
+      "Bash(git push * master)",
+      "Bash(git push * master:*)",
+      "Bash(git push *:master)",
+      "Bash(git push -u origin)",
+      "Bash(git push --set-upstream origin)",
+      "Bash(git push --all*)",
+      "Bash(git push --mirror*)",
+      "Bash(git push *refs/heads/master*)",
+      "Bash(git push *+master*)",
+      "Bash(gh pr merge*)"
+    ]
+  }
+}
